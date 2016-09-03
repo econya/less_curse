@@ -12,6 +12,7 @@ list_ui.on_select = LessCurse::Actions::QUIT
 
 LessCurse.screen.add list_ui
 LessCurse.show_screen
+STDIN.getch
 
 # Display hash items
 simple_hash = {rainbows: "fabolous",
@@ -21,3 +22,10 @@ simple_hash = {rainbows: "fabolous",
 
 list_ui.data = simple_hash
 LessCurse.show_screen
+
+STDIN.getch
+LessCurse.screen.windows.each do |widget, window|
+  puts "#{widget} -> #{window}"
+end
+
+LessCurse.close_screen
