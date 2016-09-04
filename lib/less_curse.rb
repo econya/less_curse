@@ -5,8 +5,9 @@ require 'less_curse/geometry'
 require 'less_curse/screen'
 require 'less_curse/actions'
 
-# Widgets
-require "less_curse/list"
+require "less_curse/renderer"
+
+require "less_curse/widgets"
 
 module LessCurse
   def self.screen

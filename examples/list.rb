@@ -6,7 +6,7 @@ require 'less_curse'
 # Display list items
 simple_list = [1, 2, 3, 4, 5, 6, 7]
 
-list_ui = LessCurse::List.new
+list_ui = LessCurse::Widgets::List.new
 list_ui.data = simple_list
 list_ui.on_select = LessCurse::Actions::QUIT
 
