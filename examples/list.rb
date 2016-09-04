@@ -12,7 +12,7 @@ list_ui.on_select = LessCurse::Actions::QUIT
 
 LessCurse.screen.add list_ui
 LessCurse.show_screen
-STDIN.getch
+LessCurse.enter_loop!
 
 # Display hash items
 simple_hash = {rainbows: "fabolous",
@@ -21,6 +21,7 @@ simple_hash = {rainbows: "fabolous",
                sunset:   "marvellous"}
 
 list_ui.data = simple_hash
+list_ui.title = "Hash keys"
 LessCurse.show_screen
 
 STDIN.getch

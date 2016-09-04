@@ -3,6 +3,7 @@ module LessCurse
     attr_accessor :widgets
     attr_accessor :windows
     attr_accessor :size
+    attr_accessor :focused_widget
 
     def initialize
       # Need to initialize screen to access the terminal size
@@ -12,6 +13,7 @@ module LessCurse
         *FFI::NCurses::getmaxyx(FFI::NCurses::stdscr))
       @widgets = []
       @windows = {}
+      @focused_widget = true
     end
 
     def add widget
@@ -21,8 +23,9 @@ module LessCurse
 
     def show
       #FFI::NCurses.initscr called in initialize
-      FFI::NCurses.cbreak # can ctrl-c
-      FFI::NCurses.noecho
+      FFI::NCurses.cbreak # can ctrl-c, not waiting for newlines to end input.
+      FFI::NCurses.noecho # do not echo input in win.
+      FFI::NCurses.keypad FFI::NCurses::stdscr, true # recognize KEY_UP etc.
       FFI::NCurses.clear
       FFI::NCurses.box @windows[@widgets[0]], 0, 0
       FFI::NCurses.refresh
