@@ -25,7 +25,7 @@ module LessCurse
 
   def self.window rectangle
     FFI::NCurses.newwin rectangle.size.height, rectangle.size.width,
-      rectangle.position.x, rectangle.position.y
+      rectangle.position.y, rectangle.position.x
   end
 
   def self.enter_loop!

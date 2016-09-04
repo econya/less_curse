@@ -9,8 +9,8 @@ module LessCurse
       # Need to initialize screen to access the terminal size
       FFI::NCurses.initscr
 
-      @size = LessCurse::Geometry::Size.new(
-        *FFI::NCurses::getmaxyx(FFI::NCurses::stdscr))
+      height,width =  FFI::NCurses::getmaxyx(FFI::NCurses::stdscr)
+      @size = LessCurse::Geometry::Size.new(width,height)
       @widgets = []
       @windows = {}
       @focused_widget = true
@@ -18,7 +18,8 @@ module LessCurse
 
     def add widget
       @widgets << widget
-      @windows[widget] = new_window
+      #@windows[widget] = new_window
+      new_window
     end
 
     def show
@@ -39,9 +40,23 @@ module LessCurse
     end
 
     def new_window
-      # Should default to horizontal tiling
-      rectangle = LessCurse::Geometry::Rectangle.new 0, 0, 50, 15
-      LessCurse::window rectangle
+      # Defaults to horizontal tiling
+      equal_widths = @size.width / (@widgets.size)
+      @widgets.each_with_index do |widget, idx|
+        area = LessCurse::Geometry::Rectangle.new equal_widths * idx, #x
+                                                  0, #y
+                                                  equal_widths - 1, #width
+                                                  @size.height #height
+        if @windows[widget].nil?
+          @windows[widget] = LessCurse.window area
+        else
+          FFI::NCurses.wresize(@windows[widget],
+                               area.size.height, area.size.width)
+          FFI::NCurses.mvwin(@windows[widget],
+                             area.position.y, area.position.x)
+
+        end
+      end
     end
   end
 end
