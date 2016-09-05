@@ -39,6 +39,7 @@ module LessCurse
         screen.focus_next
       else
         # nothing to be done?
+        screen.focused_widget.handle_input key
       end
       screen.repaint
     end
