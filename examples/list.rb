@@ -3,6 +3,7 @@
 
 require 'less_curse'
 
+begin
 # Display list items
 simple_list = [1, 2, 3, 4, 5, 6, 7]
 
@@ -22,6 +23,11 @@ simple_hash = {rainbows: "fabolous",
 
 list_ui.data = simple_hash
 list_ui.title = "Hash keys"
+
+textview_ui = LessCurse::Widgets::TextView.new title: 'TextView',
+                                               data: "Showing Text Data\nSecond Line of Text Data"
+
+LessCurse.screen.add textview_ui
 LessCurse.show_screen
 
 STDIN.getch
@@ -29,4 +35,6 @@ LessCurse.screen.windows.each do |widget, window|
   puts "#{widget} -> #{window}"
 end
 
+ensure
 LessCurse.close_screen
+end
