@@ -36,8 +36,9 @@ module LessCurse
       break if key == FFI::NCurses::KEY_LEFT
       break if key == FFI::NCurses::KEY_ENTER
       if key == FFI::NCurses::KEY_TAB
-        # focus next
-        #refresh
+        screen.focus_next
+      else
+        # nothing to be done?
       end
       screen.repaint
     end
