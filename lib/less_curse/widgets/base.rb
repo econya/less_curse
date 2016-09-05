@@ -14,7 +14,7 @@ module LessCurse
       end
 
       # Handle input or return false if doesnt care
-      def handle_input
+      def handle_input key
         false
       end
     end
