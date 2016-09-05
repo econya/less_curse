@@ -29,8 +29,8 @@ textview_ui = LessCurse::Widgets::TextView.new title: 'TextView',
 
 LessCurse.screen.add textview_ui
 LessCurse.show_screen
+LessCurse.enter_loop!
 
-STDIN.getch
 LessCurse.screen.windows.each do |widget, window|
   puts "#{widget} -> #{window}"
 end
