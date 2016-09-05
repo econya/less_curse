@@ -27,6 +27,10 @@ list_ui.title = "Hash keys"
 textview_ui = LessCurse::Widgets::TextView.new title: 'TextView',
                                                data: "Showing Text Data\nSecond Line of Text Data"
 
+list_ui.on_select = lambda do |selected_item|
+  textview_ui.data = "Selected: #{selected_item}"
+end
+
 LessCurse.screen.add textview_ui
 LessCurse.show_screen
 LessCurse.enter_loop!

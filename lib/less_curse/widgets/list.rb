@@ -47,28 +47,34 @@ module LessCurse
       # Select previous data element in list (roll over if nexessary)
       def select_previous
         if @selected_data.nil? && @data.size >= 0
-          @selected_data = @data[0]
+          @selected_data = @data.to_a[0]
         else
-          @selected_data = @data[(selected_data_index - 1) % @data.size]
+          @selected_data = @data.to_a[(selected_data_index - 1) % @data.size]
         end
         recalc_top_index
+        if @on_select
+          @on_select.call @selected_data
+        end
       end
 
       # Select next data element in list (roll over if nexessary)
       def select_next
         if @selected_data.nil? && @data.size >= 0
-          @selected_data = @data[0]
+          @selected_data = @data.to_a[0]
         else
-          @selected_data = @data[(selected_data_index + 1) % @data.size]
+          @selected_data = @data.to_a[(selected_data_index + 1) % @data.size]
         end
         recalc_top_index
+        if @on_select
+          @on_select.call @selected_data
+        end
       end
 
       private
 
       # Get index of given element in @data
       def data_index element
-        @data.index(element)
+        @data.to_a.index(element)
       end
 
       # Get index of selected element in @data
@@ -91,7 +97,7 @@ module LessCurse
         window = LessCurse.screen.windows[self]
         height,width = FFI::NCurses::getmaxyx(window)
         # -2: border, -1: 0-based indexing
-        @data[@top_element_idx..(@top_element_idx + height - 2 - 1)]
+        @data.to_a[@top_element_idx..(@top_element_idx + height - 2 - 1)]
       end
 
       # Write a line in window
