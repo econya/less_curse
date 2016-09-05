@@ -1,8 +1,12 @@
-# Lesscurse
+# LessCurse
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lesscurse`. To experiment with that code, run `bin/console` for an interactive prompt.
+Simple terminal-based ncurses UIs.
 
-TODO: Delete this and the text above, and describe your gem
+LessCurse is a work-in-progress, but it's unclear how much work and how much progress will happen/is needed.
+
+It will probably just be developed enough to serve as a dead-simple TUI for the trackt time-tracking system.
+
+Im happy about bug reports and ideas, but chances are high that I cannot react in the way I wish others would do.
 
 ## Installation
 
@@ -22,15 +26,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+See the examples folder for now.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bundle` to install dependencies. You can also run `bundle console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lesscurse.
+Bug reports and pull requests are welcome on GitHub at https://github.com/econya/less_curse.
 
