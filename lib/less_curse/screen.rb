@@ -13,7 +13,7 @@ module LessCurse
       @size = LessCurse::Geometry::Size.new(width,height)
       @widgets = []
       @windows = {}
-      @focused_widget = true
+      @focused_widget = nil
     end
 
     def add widget
@@ -57,6 +57,7 @@ module LessCurse
 
         end
       end
+      @focused_widget = @widgets.last
     end
   end
 end
