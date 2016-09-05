@@ -58,7 +58,7 @@ After checking out the repo, run `bundle` to install dependencies. You can also 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-### Design goals and decision
+### Design goals and decisions
 
 LessCurse aims to solve a specific problem and the library user (me) should be able to hack a UI with ease and without caring too much about configuration.
 
