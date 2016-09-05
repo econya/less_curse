@@ -32,12 +32,14 @@ module LessCurse
     loop do
       key = FFI::NCurses.wgetch FFI::NCurses::stdscr
       # Check who can handle
-      break if key == FFI::NCurses::KEY_UP
+      # Global
+      break if key == FFI::NCurses::KEY_LEFT
       break if key == FFI::NCurses::KEY_ENTER
       if key == FFI::NCurses::KEY_TAB
         # focus next
         #refresh
       end
+      screen.repaint
     end
   end
 end
