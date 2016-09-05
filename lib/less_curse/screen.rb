@@ -58,12 +58,14 @@ module LessCurse
         end
       end
       @focused_widget = @widgets.last
+      @focused_widget.focus
     end
 
     def focus_next
       focused_widget_idx = @widgets.index(@focused_widget) || 0
+      @focused_widget.unfocus
       @focused_widget = @widgets[(focused_widget_idx + 1) % @widgets.size]
-      @focused_widget.title = "#{@focused_widget.title}X"
+      @focused_widget.focus
     end
   end
 end

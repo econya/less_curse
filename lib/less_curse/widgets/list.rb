@@ -12,18 +12,14 @@ module LessCurse
         window = LessCurse.screen.windows[self]
         FFI::NCurses.wclear window
 
-        LessCurse::Renderer::box_with_title window, @title
+        LessCurse::Renderer::bold_if focused?, window do
+          LessCurse::Renderer::box_with_title window, @title
+        end
 
         # Do we have kind of a display-window?
         visible_data.each_with_index do |d, idx|
-          if selected_data == d
-            FFI::NCurses.wattron window, FFI::NCurses::A_BOLD
-          end
-
-          write_line_at window, idx, d.to_s
-
-          if selected_data == d
-            FFI::NCurses.wattroff window, FFI::NCurses::A_BOLD
+          LessCurse::Renderer::bold_if(@selected_data == d, window) do
+            LessCurse::Renderer::write_line window, idx, d.to_s
           end
         end
 
@@ -98,11 +94,6 @@ module LessCurse
         height,width = FFI::NCurses::getmaxyx(window)
         # -2: border, -1: 0-based indexing
         @data.to_a[@top_element_idx..(@top_element_idx + height - 2 - 1)]
-      end
-
-      # Write a line in window
-      def write_line_at window, line, text
-        FFI::NCurses.mvwaddstr window, line + 1, 1, text
       end
     end
   end
