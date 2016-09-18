@@ -1,3 +1,4 @@
+require 'logger'
 require 'ffi-ncurses'
 
 require 'less_curse/version'
