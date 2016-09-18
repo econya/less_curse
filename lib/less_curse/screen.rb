@@ -28,6 +28,7 @@ module LessCurse
       @focused_widget.focus if @focused_widget
       #FFI::NCurses.initscr called in initialize
       FFI::NCurses.cbreak # can ctrl-c, not waiting for newlines to end input.
+      FFI::NCurses.raw
       FFI::NCurses.noecho # do not echo input in win.
       FFI::NCurses.keypad FFI::NCurses::stdscr, true # recognize KEY_UP etc.
       FFI::NCurses.clear
