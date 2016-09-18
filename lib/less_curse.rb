@@ -5,6 +5,7 @@ require 'less_curse/version'
 require 'less_curse/geometry'
 require 'less_curse/screen'
 require 'less_curse/actions'
+require 'less_curse/null_logger'
 
 require "less_curse/renderer"
 
@@ -62,6 +63,10 @@ module LessCurse
   end
 
   def self.logger
-    @@logger ||= Logger.new('less_curse.log')
+    @@logger ||= LessCurse::NullLogger.new
+  end
+
+  def self.log_to! file
+    @@logger = Logger.new(file)
   end
 end
