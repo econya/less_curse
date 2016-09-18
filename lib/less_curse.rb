@@ -11,6 +11,10 @@ require "less_curse/renderer"
 require "less_curse/widgets"
 
 module LessCurse
+  @@actions = {
+    FFI::NCurses::KEY_TAB => lambda { screen.focus_next }
+    }
+
   def self.screen
     @@screen ||= Screen.new
   end
@@ -31,18 +35,25 @@ module LessCurse
 
   def self.enter_loop!
     loop do
-      key = FFI::NCurses.wgetch FFI::NCurses::stdscr
-      # Check who can handle
-      # Global
-      break if key == FFI::NCurses::KEY_LEFT
-      break if key == FFI::NCurses::KEY_ENTER
-      if key == FFI::NCurses::KEY_TAB
-        screen.focus_next
-      else
-        # nothing to be done?
-        screen.focused_widget.handle_input key
-      end
+      break if !handle_input
       screen.repaint
+    end
+  end
+
+  # Read from keyboard, handle keypress oneself or dispatch
+  # to focused widget.
+  def self.handle_input
+    key = FFI::NCurses.wgetch FFI::NCurses::stdscr
+    debug_msg "key press: #{key} / keyname: #{FFI::NCurses::keyname key} / #{FFI::NCurses::KEY_CTRL_Q}"
+
+    # That will let us break out of the loop
+    return false if key == FFI::NCurses::KEY_CTRL_Q
+
+    if @@actions[key]
+      # Global actions first
+      @@actions[key].call
+    else
+      screen.focused_widget.handle_input key
     end
   end
 

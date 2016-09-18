@@ -51,6 +51,7 @@ module LessCurse
         if @on_select
           @on_select.call @selected_data
         end
+        @selected_data
       end
 
       # Select next data element in list (roll over if nexessary)
@@ -64,6 +65,7 @@ module LessCurse
         if @on_select
           @on_select.call @selected_data
         end
+        @selected_data
       end
 
       private
