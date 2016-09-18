@@ -6,7 +6,11 @@ LessCurse is a work-in-progress, but it's unclear how much work and how much pro
 
 It will probably just be developed enough to serve as a dead-simple TUI for the trackt time-tracking system.
 
-Im happy about bug reports and ideas, but chances are high that I cannot react in the way I wish others would do.
+I'm happy about bug reports and ideas, but chances are high that I cannot react in the way I wish others would do.
+
+## License
+
+LessCurse is released under the GPL, Version 3 or any later version and Copyright 2016 by Felix Wolfsteller.
 
 ## Installation
 
@@ -39,11 +43,11 @@ The screen can and should be populated by widgets.  No complex layouts are possi
 
 Always one widget is focused.
 
-The screen can handle global keyboard input (shortcuts).  Currently, the TAB key is used to switch the focus of widgets.  CTRL_Q will quit the application.
+The screen can handle global keyboard input (shortcuts, in LessCurse#actions).  Currently, the TAB key is used to switch the focus of widgets.  CTRL_Q will quit the application.
 
 ### Widgets
 
-All (three) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
+All (three... :)) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
 
   - `new(title: "Shows on top", data: "Shows somewhere")` [creates instance]
   - `set_default_actions` [populates the @action map (keys to lambdas)]
@@ -55,15 +59,16 @@ The default look of a widget has a box drawn around it, with an optional title a
 
 #### List
 
-Shows a list where an item can be selected.
+Shows a list where an item can be selected with the UP and DOWN array keys.
 
 #### TextView
 
-Shows text.
+Shows text.  Doesnt even scroll yet.
 
 #### TextArea
 
 Allows creepy text input.
+
 
 ## Development
 
