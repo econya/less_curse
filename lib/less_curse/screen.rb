@@ -23,6 +23,8 @@ module LessCurse
     end
 
     def show
+      @focused_widget = @widgets.last
+      @focused_widget.focus if @focused_widget
       #FFI::NCurses.initscr called in initialize
       FFI::NCurses.cbreak # can ctrl-c, not waiting for newlines to end input.
       FFI::NCurses.noecho # do not echo input in win.
@@ -57,8 +59,6 @@ module LessCurse
 
         end
       end
-      @focused_widget = @widgets.last
-      @focused_widget.focus
     end
 
     def focus_next
