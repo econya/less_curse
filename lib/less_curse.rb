@@ -44,4 +44,12 @@ module LessCurse
       screen.repaint
     end
   end
+
+  def self.debug_msg msg
+    logger.debug msg
+  end
+
+  def self.logger
+    @@logger ||= Logger.new('less_curse.log')
+  end
 end
