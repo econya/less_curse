@@ -25,6 +25,10 @@ begin
   # Display file content (once file selected)
   LessCurse.screen.add viewer
 
+  # Show off with header and footer
+  LessCurse.screen.header = "-- ** filebrowser ** --"
+  LessCurse.screen.footer = "[CTRL_Q to quit]"
+
   # Display it, really
   LessCurse.show_screen
 
@@ -33,4 +37,3 @@ begin
 ensure
   LessCurse.close_screen
 end
-
