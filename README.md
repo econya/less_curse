@@ -38,11 +38,12 @@ The screen can and should be populated by widgets.  No complex layouts are possi
 
 ### Widgets
 
-All (two) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
+All (three) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
 
   - `new(title: "Shows on top", data: "Shows somewhere")` [creates instance]
   - `refresh` [(re)draws the widget]
-  - `handl_input(key)` [deals with input, if focused]
+  - `handle_input(key)` [deals with input, that will be handed on from main module if focused]
+    has to return true if key press was dealt with
 
 #### List
 
@@ -51,6 +52,10 @@ Shows a list where an item can be selected.
 #### TextView
 
 Shows text.
+
+#### TextArea
+
+Allows creepy text input.
 
 ## Development
 
