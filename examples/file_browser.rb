@@ -4,8 +4,9 @@
 require 'less_curse'
 
 viewer = LessCurse::Widgets::TextView.new title: 'File Content',
-                                          data:  'Use TAB to change focus'\
-                                                 'UP/DOWN to select file'
+                                          data:  'Use TAB to change focus\n'\
+                                                 'UP/DOWN to select file\n'\
+                                                 'CTRL+Q to quit.'
 
 file_list_ui = LessCurse::Widgets::List.new title: 'Files:',
                                             data:  Dir['*']
