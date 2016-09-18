@@ -27,6 +27,7 @@ Or install it yourself as:
 ## Usage
 
 See the examples folder for now.
+It boils down to initialize a screen, populate it with widgets and create lambdas for events or keypresses.
 
 ## Concepts
 
@@ -36,6 +37,10 @@ There is only one screen and it will fill up your terminal.  Access this screen 
 
 The screen can and should be populated by widgets.  No complex layouts are possible (yet).
 
+Always one widget is focused.
+
+The screen can handle global keyboard input (shortcuts).  Currently, the TAB key is used to switch the focus of widgets.  CTRL_Q will quit the application.
+
 ### Widgets
 
 All (three) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
@@ -44,6 +49,8 @@ All (three) widgets inherit from `LessCurse::Widgets::Base` and provide followin
   - `refresh` [(re)draws the widget]
   - `handle_input(key)` [deals with input, that will be handed on from main module if focused]
     has to return true if key press was dealt with
+
+The default look of a widget has a box drawn around it, with an optional title at the top.
 
 #### List
 
