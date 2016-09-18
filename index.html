@@ -1,57 +1,149 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Less curse by econya</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Less curse</h1>
-      <h2 class="project-tagline">Simple terminal-based UIs for ruby scripts - maybe, someday.</h2>
-      <a href="https://github.com/econya/less_curse" class="btn">View on GitHub</a>
-      <a href="https://github.com/econya/less_curse/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/econya/less_curse/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Less curse</h1>
+        <p class="header">Simple terminal-based UIs for ruby scripts - maybe, someday.</p>
 
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/econya/less_curse/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/econya/less_curse/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/econya/less_curse">View On GitHub</a></li>
+        </ul>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/econya">econya</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="lesscurse" class="anchor" href="#lesscurse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LessCurse</h1>
+
+<p>Simple terminal-based ncurses UIs.</p>
+
+<p>LessCurse is a work-in-progress, but it's unclear how much work and how much progress will happen/is needed.</p>
+
+<p>It will probably just be developed enough to serve as a dead-simple TUI for the trackt time-tracking system.</p>
+
+<p>Im happy about bug reports and ideas, but chances are high that I cannot react in the way I wish others would do.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>lesscurse<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install lesscurse
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>See the examples folder for now.
+It boils down to initialize a screen, populate it with widgets and create lambdas for events or keypresses.</p>
+
+<h2>
+<a id="concepts" class="anchor" href="#concepts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Concepts</h2>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="screen" class="anchor" href="#screen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screen</h3>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<p>There is only one screen and it will fill up your terminal.  Access this screen via <code>LessCurse::screen</code> (or <code>LessCurse.screen</code>).</p>
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+<p>The screen can and should be populated by widgets.  No complex layouts are possible (yet).</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Always one widget is focused.</p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>The screen can handle global keyboard input (shortcuts).  Currently, the TAB key is used to switch the focus of widgets.  CTRL_Q will quit the application.</p>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="widgets" class="anchor" href="#widgets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Widgets</h3>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<p>All (three) widgets inherit from <code>LessCurse::Widgets::Base</code> and provide following methods:</p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/econya/less_curse">Less curse</a> is maintained by <a href="https://github.com/econya">econya</a>.</span>
+<ul>
+<li>
+<code>new(title: "Shows on top", data: "Shows somewhere")</code> [creates instance]</li>
+<li>
+<code>set_default_actions</code> [populates the <a href="https://github.com/action" class="user-mention">@action</a> map (keys to lambdas)]</li>
+<li>
+<code>refresh</code> [(re)draws the widget]</li>
+<li>
+<code>handle_input(key)</code> [deals with input, that will be handed on from main module if focused]
+has to return true if key press was dealt with</li>
+</ul>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+<p>The default look of a widget has a box drawn around it, with an optional title at the top.</p>
+
+<h4>
+<a id="list" class="anchor" href="#list" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List</h4>
+
+<p>Shows a list where an item can be selected.</p>
+
+<h4>
+<a id="textview" class="anchor" href="#textview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TextView</h4>
+
+<p>Shows text.</p>
+
+<h4>
+<a id="textarea" class="anchor" href="#textarea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TextArea</h4>
+
+<p>Allows creepy text input.</p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<p>After checking out the repo, run <code>bundle</code> to install dependencies. You can also run <code>bundle console</code> for an interactive prompt that will allow you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h3>
+<a id="design-goals-and-decisions" class="anchor" href="#design-goals-and-decisions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design goals and decisions</h3>
+
+<p>LessCurse aims to solve a specific problem and the library user (me) should be able to hack a UI with ease and without caring too much about configuration.</p>
+
+<p>Thus, LessCurse is <strong>very</strong> oppinionated.</p>
+
+<ul>
+<li>No complex layouts, only screen-tiling.</li>
+<li>Few options.</li>
+<li>No way to get lost in visual design decisions.</li>
+</ul>
+
+<p>Widgets are for now not directly aware of the underlying (ncurses) window, this is a design decision workaround and yet on purpose.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/econya/less_curse">https://github.com/econya/less_curse</a>.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
-
-    </section>
-
-  
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
