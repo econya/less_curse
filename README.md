@@ -26,8 +26,8 @@ Or install it yourself as:
 
 ## Usage
 
-See the examples folder for now.
-It boils down to initialize a screen, populate it with widgets and create lambdas for events or keypresses.
+See the examples folder for now.  Note that executing the examples creates a log file next to it (e.g. examples/list.rb.log).
+It boils down to initialize a Screen, populate it with Widgets and create lambdas to react to events (like a list item was selected) or key-presses.
 
 ## Concepts
 

@@ -3,6 +3,8 @@
 
 require 'less_curse'
 
+LessCurse.log_to! $PROGRAM_NAME + ".log"
+
 begin
 # Display list items
 simple_list = [1, 2, 3, 4, 5, 6, 7]
