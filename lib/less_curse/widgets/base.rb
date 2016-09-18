@@ -4,13 +4,18 @@ module LessCurse
       attr_accessor :data
       attr_accessor :title
       attr_accessor :focus
+      attr_accessor :actions
 
       def initialize data: nil, title: ""
         @data, @title = data, title
+        set_default_actions
       end
 
       # Refresh portions of screen, probably using ncurses primitives
       def refresh ; end
+
+      # Populate actions with proper code
+      def set_default_actions ; end
 
       # Handle input or return false if doesnt care
       def handle_input key

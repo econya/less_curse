@@ -3,10 +3,14 @@ module LessCurse
     class List < Base
       attr_accessor :on_select
       attr_accessor :selected_data
-      attr_accessor :actions
       attr_accessor :top_element_idx
 
       @top_element_idx = 0
+
+      def set_default_actions
+        @actions = { FFI::NCurses::KEY_UP   => :select_previous,
+                     FFI::NCurses::KEY_DOWN => :select_next}
+      end
 
       def refresh
         window = LessCurse.screen.windows[self]
@@ -29,15 +33,10 @@ module LessCurse
       end
 
       def handle_input key
-        # return false if action = @actions[key]
-        case key
-        when FFI::NCurses::KEY_UP
-          select_previous
-        when FFI::NCurses::KEY_DOWN
-          select_next
-        else
-          return false
-        end
+        action = @actions[key]
+        LessCurse::debug_msg "List will execute action: #{action}"
+        return false if !action
+        send(action)
       end
 
       # Select previous data element in list (roll over if nexessary)
