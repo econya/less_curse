@@ -39,11 +39,15 @@ It boils down to initialize a Screen, populate it with Widgets and create lambda
 
 There is only one screen and it will fill up your terminal.  Access this screen via `LessCurse::screen` (or `LessCurse.screen`).
 
-The screen can and should be populated by widgets.  No complex layouts are possible (yet).
+The screen can and should be populated by widgets.  No layouts with exact positioning are possible.  By default, the screen will split vertically and each widget will take up an equal amount of space.  However, slightly more complext `Grid`-Layouts are possible.
 
 Always one widget is focused.
 
 The screen can handle global keyboard input (shortcuts, in LessCurse#actions).  Currently, the TAB key is used to switch the focus of widgets.  CTRL_Q will quit the application.
+
+### The Grid
+
+A Grid can be used if the screen is to be tiled not only vertically, but also horizontally.  Each row will take up an equal amount of space, where each widget in a row shares the space within that row equally.
 
 ### Widgets
 

@@ -4,6 +4,7 @@ require 'ffi-ncurses'
 require 'less_curse/version'
 require 'less_curse/geometry'
 require 'less_curse/screen'
+require 'less_curse/grid'
 require 'less_curse/actions'
 require 'less_curse/null_logger'
 
