@@ -63,7 +63,9 @@ The default look of a widget has a box drawn around it, with an optional title a
 
 #### List
 
-Shows a list where an item can be selected with the UP and DOWN array keys.
+Shows a list where a single item can be selected with the UP and DOWN array keys.
+The list is thought to be able to gobble up **Lists of Objects** which can be selected and are then represented as `List.selected_data`.
+The text which is shown per Object defaults to `object.to_s` but can be overridden by passing a lambda into `List.display_func`.
 
 #### TextView
 

@@ -4,6 +4,11 @@ module LessCurse
       attr_accessor :on_select
       attr_accessor :selected_data
       attr_accessor :top_element_idx
+      attr_accessor :display_func
+
+      def initialize data: [], title: ""
+        super(data: data, title: title)
+      end
 
       @top_element_idx = 0
 
@@ -23,7 +28,12 @@ module LessCurse
         # Do we have kind of a display-window?
         visible_data.each_with_index do |d, idx|
           LessCurse::Renderer::bold_if(@selected_data == d, window) do
-            LessCurse::Renderer::write_line window, idx, d.to_s
+            if @display_func
+              item_text = display_func.call(d)
+            else
+              item_text = d.to_s
+            end
+            LessCurse::Renderer::write_line window, idx, item_text
           end
         end
 
