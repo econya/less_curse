@@ -14,7 +14,8 @@ require "less_curse/widgets"
 
 module LessCurse
   @@actions = {
-    FFI::NCurses::KEY_TAB => lambda { screen.focus_next }
+    FFI::NCurses::KEY_TAB  => lambda { screen.focus_next },
+    FFI::NCurses::KEY_BTAB => lambda { screen.focus_previous }
     }
 
   def self.screen
