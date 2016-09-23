@@ -11,8 +11,9 @@ module LessCurse
         set_default_actions
       end
 
-      # Refresh portions of screen, probably using ncurses primitives
-      def refresh ; end
+      # Draw portions of screen, probably using ncurses primitives.
+      # Expect an already clean/red window.
+      def draw(window) ; end
 
       # Populate actions with proper code
       def set_default_actions ; end

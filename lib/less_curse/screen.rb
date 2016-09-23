@@ -59,9 +59,10 @@ module LessCurse
 
       # Let all Widgets redraw themselfes
       widgets.each  do |widget|
-        FFI::NCurses.wclear @windows[widget]
-        widget.refresh
-        FFI::NCurses.wrefresh @windows[widget]
+        window = @windows[widget]
+        FFI::NCurses.wclear   window
+        widget.draw           window
+        FFI::NCurses.wrefresh window
       end
     end
 
