@@ -6,6 +6,7 @@ module LessCurse
     attr_accessor :focused_widget
     attr_accessor :header
     attr_accessor :footer
+    attr_accessor :popups
 
     def initialize
       # Need to initialize screen to access the terminal size
@@ -16,6 +17,7 @@ module LessCurse
       @windows = {}
       @focused_widget = nil
       @grid    = LessCurse::Grid.new [[]]
+      @popups  = {}
     end
 
     def add widget_or_grid
@@ -64,6 +66,24 @@ module LessCurse
         widget.draw           window
         FFI::NCurses.wrefresh window
       end
+
+      @popups.each do |popup, window|
+        FFI::NCurses.wclear   window
+        popup.draw            window
+        FFI::NCurses.wrefresh window
+      end
+    end
+
+    def show_popup type=:info, content='Popup'
+      # Lets take up quarter of screen and draw a boxed window
+      popup_widget = LessCurse::Widgets::Button.new title: content.to_s
+      popup_widget.focus = true
+      area = LessCurse::Geometry::Rectangle.new @size.width / 4,
+        @size.height / 4,
+        @size.width  / 2,
+        @size.height / 2
+
+      @popups[popup_widget] = LessCurse.window area
     end
 
     # Focus next element in #widgets
