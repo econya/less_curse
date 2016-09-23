@@ -45,32 +45,40 @@ module LessCurse
       repaint
     end
 
+    # Repaint the screen and all contained widgets
     def repaint
       FFI::NCurses.refresh
-      if @header && !@footer.empty?
+
+      # 'Draw' header and/or footer
+      if @header && !@header.empty?
         FFI::NCurses::mvaddstr 0, 0, @header
       end
       if @footer && !@footer.empty?
         FFI::NCurses::mvaddstr @size.height - 1, 0, @footer
       end
 
+      # Let all Widgets redraw themselfes
       widgets.each {|widget| widget.refresh}
       @windows.each {|widget, window| FFI::NCurses.wrefresh window}
     end
 
+    # Focus next element in #widgets
     def focus_next
       cycle_focus(+1)
     end
 
+    # Focus next element in #widgets
     def focus_previous
       cycle_focus(-1)
     end
 
+    # Set header text (first, top line of screen)
     def header= new_header
       @header = new_header
       recalc_window_sizes
     end
 
+    # Set footer text (last, bottom line of screen)
     def footer= new_footer
       @footer = new_footer
       recalc_window_sizes
