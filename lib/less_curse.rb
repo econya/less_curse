@@ -12,6 +12,8 @@ require "less_curse/renderer"
 
 require "less_curse/widgets"
 
+# The LessCurse module which gives you static access to your "Screen" and
+# all the UI glory within it.
 module LessCurse
   @@actions = {
     FFI::NCurses::KEY_TAB  => lambda { screen.focus_next },
