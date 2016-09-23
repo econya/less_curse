@@ -58,8 +58,11 @@ module LessCurse
       end
 
       # Let all Widgets redraw themselfes
-      widgets.each {|widget| widget.refresh}
-      @windows.each {|widget, window| FFI::NCurses.wrefresh window}
+      widgets.each  do |widget|
+        FFI::NCurses.wclear @windows[widget]
+        widget.refresh
+        FFI::NCurses.wrefresh @windows[widget]
+      end
     end
 
     # Focus next element in #widgets
