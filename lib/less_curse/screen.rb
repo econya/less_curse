@@ -59,17 +59,11 @@ module LessCurse
     end
 
     def focus_next
-      focused_widget_idx = widgets.index(@focused_widget) || 0
-      @focused_widget.unfocus
-      @focused_widget = widgets[(focused_widget_idx + 1) % widgets.size]
-      @focused_widget.focus
+      cycle_focus(+1)
     end
 
     def focus_previous
-      focused_widget_idx = widgets.index(@focused_widget) || 0
-      @focused_widget.unfocus
-      @focused_widget = widgets[(focused_widget_idx - 1) % widgets.size]
-      @focused_widget.focus
+      cycle_focus(-1)
     end
 
     def header= new_header
@@ -83,6 +77,14 @@ module LessCurse
     end
 
     private
+
+    # Switch focus to step next (or previous) widget
+    def cycle_focus step=1
+      focused_widget_idx = widgets.index(@focused_widget) || 0
+      @focused_widget.unfocus
+      @focused_widget = widgets[(focused_widget_idx + step) % widgets.size]
+      @focused_widget.focus
+    end
 
     def recalc_window_sizes
       header_height = (@header.nil? || @header.empty?) ? 0 : 1
