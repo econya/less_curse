@@ -37,9 +37,9 @@ It boils down to initialize a Screen, populate it with Widgets and create lambda
 
 ### Screen
 
-There is only one screen and it will fill up your terminal.  Access this screen via `LessCurse::screen` (or `LessCurse.screen`).
+There is only one screen and it will fill up your terminal.  Access it via `LessCurse::screen` (or `LessCurse.screen`).
 
-The screen can and should be populated by widgets.  No layouts with exact positioning are possible.  By default, the screen will split vertically and each widget will take up an equal amount of space.  However, slightly more complext `Grid`-Layouts are possible.
+The screen can and should be populated by widgets.  You cannot decide on exact positioning of widgets, as a *tiling*-approach is used.  By default, the screen will split vertically and each widget will take up an equal amount of space.  However, slightly more complex `Grid`-layouts are possible (see below).
 
 Always one widget is focused.
 
@@ -51,7 +51,7 @@ A Grid can be used if the screen is to be tiled not only vertically, but also ho
 
 ### Widgets
 
-All (three... :)) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
+All (four... :)) widgets inherit from `LessCurse::Widgets::Base` and provide following methods:
 
   - `new(title: "Shows on top", data: "Shows somewhere")` [creates instance]
   - `set_default_actions` [populates the @action map (keys to lambdas)]
@@ -74,6 +74,12 @@ Shows text.  Doesnt even scroll yet.
 #### TextArea
 
 Allows creepy text input.
+
+#### Buttons
+
+Buttons do not look very much like buttons yet, but can execute a lambda on keypress (typically `RETURN`) when focused.
+
+### Popups
 
 
 ## Development
