@@ -36,13 +36,12 @@ module LessCurse
     def show
       @focused_widget = widgets.first
       @focused_widget.focus if @focused_widget
-      #FFI::NCurses.initscr called in initialize
+      # Note that FFI::NCurses.initscr is called in initialize
       FFI::NCurses.cbreak # can ctrl-c, not waiting for newlines to end input.
-      FFI::NCurses.raw    # TODO this overrides cbreak ...
+      #FFI::NCurses.raw    # TODO this overrides cbreak ... 
       FFI::NCurses.noecho # do not echo input in win.
       FFI::NCurses.keypad FFI::NCurses::stdscr, true # recognize KEY_UP etc.
       FFI::NCurses.clear
-      FFI::NCurses.box @windows[widgets[0]], 0, 0
       FFI::NCurses.refresh
       repaint
     end
