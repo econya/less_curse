@@ -55,7 +55,7 @@ All (four... :)) widgets inherit from `LessCurse::Widgets::Base` and provide fol
 
   - `new(title: "Shows on top", data: "Shows somewhere")` [creates instance]
   - `set_default_actions` [populates the @action map (keys to lambdas)]
-  - `refresh` [(re)draws the widget]
+  - `draw` [(re)draws the widget]
   - `handle_input(key)` [deals with input, that will be handed on from main module if focused]
     has to return true if key press was dealt with
 
